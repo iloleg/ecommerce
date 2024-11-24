@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container mt-5">
+    <h2>User Activity Report</h2>
+    <ul class="list-group">
+        {% for activity in activities %}
+        <li class="list-group-item">
+            {{ activity.timestamp }} - {{ activity.user.username }}: {{ activity.activity }}
+        </li>
+        {% endfor %}
+    </ul>
+</div>
+{% endblock %}

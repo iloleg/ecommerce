@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container">
+    <h2>Dashboard</h2>
+    <h3>Personal Information</h3>
+    <p><strong>Username:</strong> {{ user.username }}</p>
+    <p><strong>Email:</strong> {{ user.email }}</p>
+    <p><strong>Delivery Address:</strong> {{ user_profile.delivery_address }}</p>
+    <p><strong>Phone Number:</strong> {{ user_profile.phone_number }}</p>
+    <a href="{% url 'users:update_profile' %}" class="btn btn-secondary">Update Personal Information</a>
+
+    <h3>Your Orders</h3>
+    {% if orders %}
+    <ul>
+        {% for order in orders %}
+        <li>Order #{{ order.id }} - Status: {{ order.status }} - Total: ${{ order.total_price }}</li>
+        {% endfor %}
+    </ul>
+    {% else %}
+    <p>You have no orders.</p>
+    {% endif %}
+
+    <h3>Wishlist</h3>
+    {% if wishlist %}
+    <ul>
+        {% for item in wishlist %}
+        <li>{{ item.product.name }} - <a href="{% url 'remove_from_wishlist' item.product.id %}">Remove</a></li>
+        {% endfor %}
+    </ul>
+    {% else %}
+    <p>Your wishlist is empty.</p>
+    {% endif %}
+</div>
+{% endblock %}

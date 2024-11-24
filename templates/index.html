@@ -1,0 +1,9 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container">
+    <h1>Welcome to Our E-Commerce Store!</h1>
+    <p>Browse our latest products and enjoy a seamless shopping experience.</p>
+    <a href="{% url 'products:product_list' %}" class="btn btn-primary">Shop Now</a>
+</div>
+{% endblock %}

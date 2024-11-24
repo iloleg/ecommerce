@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container mt-5">
+    <h2>Checkout</h2>
+    <form method="POST">
+        {% csrf_token %}
+        <div class="form-group">
+            <label for="delivery_address">Delivery Address</label>
+            <input type="text" name="delivery_address" class="form-control" required>
+        </div>
+        <button type="submit" class="btn btn-primary">Proceed to Payment</button>
+    </form>
+</div>
+{% endblock %}

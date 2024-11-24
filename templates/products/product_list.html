@@ -1,0 +1,47 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container mt-5">
+    <h2>Products</h2>
+    <div class="row">
+        <div class="col-md-3">
+            <form method="GET">
+                <input type="text" name="q" class="form-control mb-3" placeholder="Search products..."
+                       value="{{ request.GET.q }}">
+                <select name="category" class="form-control mb-3">
+                    <option value="">All Categories</option>
+                    {% for category in categories %}
+                    <option value="{{ category.id }}" {% if category.id|stringformat:
+                    "s" == request.GET.category %}selected{% endif %}>{{ category.name }}</option>
+                    {% endfor %}
+                </select>
+                <select name="subcategory" class="form-control mb-3">
+                    <option value="">All Subcategories</option>
+                    {% for subcategory in subcategories %}
+                    <option value="{{ subcategory.id }}" {% if subcategory.id|stringformat:
+                    "s" == request.GET.subcategory %}selected{% endif %}>{{ subcategory.name }}</option>
+                    {% endfor %}
+                </select>
+                <button type="submit" class="btn btn-primary w-100">Search</button>
+            </form>
+        </div>
+        <div class="col-md-9">
+            <div class="row">
+                {% for product in products %}
+                <div class="col-sm-6 col-md-4 mb-4">
+                    <div class="card">
+                        <img src="{{ product.main_image.url }}" class="card-img-top" alt="{{ product.name }}">
+                        <div class="card-body">
+                            <h5 class="card-title">{{ product.name }}</h5>
+                            <p class="card-text">${{ product.selling_price }}</p>
+                            <a href="{% url 'products:product_detail' product.id %}" class="btn btn-outline-primary">Details</a>
+                            <a href="{% url 'products:add_to_bag' product.id %}" class="btn btn-primary">Add to Bag</a>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

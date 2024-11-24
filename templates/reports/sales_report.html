@@ -1,0 +1,10 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container mt-5">
+    <h2>Sales Report</h2>
+    <p><strong>Daily Sales:</strong> ${{ daily_sales }}</p>
+    <p><strong>Weekly Sales:</strong> ${{ weekly_sales }}</p>
+    <p><strong>Monthly Sales:</strong> ${{ monthly_sales }}</p>
+</div>
+{% endblock %}

@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container mt-5">
+    <h2>Most Purchased Products</h2>
+    <ul class="list-group">
+        {% for product in products %}
+        <li class="list-group-item">
+            {{ product.name }} - Purchased {{ product.purchase_count }} times
+        </li>
+        {% endfor %}
+    </ul>
+</div>
+{% endblock %}

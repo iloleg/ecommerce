@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Activate Your Account</title>
+</head>
+<body>
+<h1>Activate Your Account</h1>
+<p>Hello {{ user.username }},</p>
+<p>Thank you for registering at our site. To activate your account, please click the link below:</p>
+<p><a href="{{ protocol }}://{{ domain }}{% url 'users:activate' uidb64=uid token=token %}">Activate your account</a>
+</p>
+<p>If the above link doesn't work, please copy and paste the following URL into your browser:</p>
+<p>{{ protocol }}://{{ domain }}{% url 'users:activate' uidb64=uid token=token %}</p>
+<p>Thank you,<br>Our Team</p>
+</body>
+</html>

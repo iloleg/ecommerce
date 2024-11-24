@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container mt-5">
+    <h2>Sales Statistics by Product</h2>
+    <ul class="list-group">
+        {% for product in products %}
+        <li class="list-group-item">
+            {{ product.name }} - Total Sales: ${{ product.total_sales }}
+        </li>
+        {% endfor %}
+    </ul>
+</div>
+{% endblock %}
